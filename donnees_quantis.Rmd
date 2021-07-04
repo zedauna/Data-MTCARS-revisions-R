@@ -1,0 +1,551 @@
+---
+title: "Revisions sur jeux de donnée MTCARS"
+author: "Jeros"
+date: "26/06/2021"
+output:
+  html_document:
+    df_print: paged
+---
+
+# =============================================================================
+# IMPORTATION DES PACKAGES DE TRAVAIL
+# =============================================================================
+#https://fxjollois.github.io/cours-2016-2017/index.html
+```{r}
+
+if(!require("pacman")){
+	suppressMessages(install.packages("pacman"))
+	suppressMessages(library("pacman"))
+} 
+ suppressMessages(p_load("gganimate","ggplot2","ggthemes","ggThemeAssist","scales","DataExplorer","FactoMineR","corrr","PerformanceAnalytics","knitr","GGally","corrplot","ggcorrplot","corpcor","stringr","ggsci","qqplotr","nortest","psych",'ggpubr','rstatix'))
+ 
+ 
+```
+
+# =============================================================================
+# DECLARATION DU DOSSIER DE TRAVAIL
+# =============================================================================
+```{r}
+setwd("D:/Navigation/Téléchargements/01_Statistique/revision_R/MTCARS")
+paste("le dossier de travail est:",getwd())
+paste("le fichier", list.files(), "se trouve dans ce dossier")
+
+```
+
+# =============================================================================
+# IMPORTATION DES DONNÉES
+# =============================================================================
+```{r}
+df=read.csv("mtcars.csv",sep = ",",dec = "." , header = TRUE)
+
+```
+
+# ===============================================================
+# Analyse de la forme des données (struture)
+# ===============================================================
+```{r}
+str(df)
+
+
+```
+
+
+```{r}
+plot_str(df)
+```
+
+
+```{r}
+introduce(df)
+```
+
+
+```{r}
+
+plot_intro(df)
+
+```
+#les valeurs manquantes
+```{r}
+plot_missing(df)
+#missingdf$df %<>% mutate(index = row_number()) 
+#missingdf$df
+
+```
+
+```{r}
+print('Les dimensions du dataframe')
+print(dim(df))
+print('----------------------------')
+print('Summary')
+print(summary(df))
+
+```
+
+
+```{r}
+
+print('----------------------------')
+print('description')
+kable(describe(df))
+
+```
+
+
+
+# ===============================================================
+# #forme de distribution et de dispersion
+# ===============================================================
+```{r}
+
+kurtosis=function(x)
+{
+	n=length(x)
+	moy=mean(x)
+	etype=sd(x)*sqrt((n-1)/n)
+	return(mean((x-moy)^4)/(etype^4))
+}
+
+
+skewness=function(x)
+{
+	n=length(x)
+	moy=mean(x)
+	etype=sd(x)*sqrt((n-1)/n)
+	return(mean((x-moy)^3)/(etype^3))
+}
+
+q1=function(x) return(quantile(x,0.25))
+q2=function(x) return(quantile(x,0.5))
+q3=function(x) return(quantile(x,0.75))
+
+
+ddist_func=function(x)
+{
+  kurtosis(x)
+  skewness(x)
+  q1(x)
+  q2(x)
+  q3(x)
+}
+
+
+
+print(lapply(X =df[,2:12], FUN =ddist_func))
+
+
+```
+
+
+```{r}
+print(sapply(X =df[,2:12], FUN =ddist_func))
+
+
+```
+#moyenne par ligne et par colonne
+```{r}
+print('moyenne en boucle sur les lignes')
+print(apply(df[,2:12], 1, mean))
+
+print('------------------------------')
+print('moyenne en boucle sur les colonnes')
+print(apply(df[,2:12], 2, mean))
+
+print('------------------------------')
+print('moyenne en boucle sur les colonnes par carb')
+print(by(df[,2:11],df$carb, colMeans))
+
+
+```
+
+# ===============================================================
+# Analyse descriptive : quanti
+# ===============================================================
+#FONCTIONS histogramme et boxplot
+```{r}
+
+histTable=function(n,donneesTable){
+  for(i in n:ncol(donneesTable)) {
+    hist(donneesTable[,i],main =paste("Histogramme de la variable : ", colnames((donneesTable)[i])),
+         xlab=colnames((donneesTable)[i]),ylab="Effectifs")
+    }
+}
+
+
+boxTable=function(n,donneesTable){
+for(i in n:ncol(donneesTable)) {
+  boxplot(donneesTable[,i],main =paste("Boxplot de la variable : ",colnames((donneesTable)[i])),
+          ylab =paste("variable :",colnames((donneesTable)[i])) )
+  }
+}
+
+
+```
+
+#Histogramme
+```{r}
+histTable(2,df)
+
+```
+
+#Boxplot
+```{r}
+
+boxTable(2,df)
+
+```
+#FONCTION HIST_bOX
+```{r}
+
+HistBoxTable=function(n,donneesTable){
+for(i in n:ncol(donneesTable)) {
+  
+    hist(donneesTable[,i],main = paste("HISTOGRAMME DE  LA VARIABLE : ",str_to_upper(colnames((donneesTable)[i]))),xlab=colnames((donneesTable)[i]),ylab="effectifs");
+  	legend("topleft", paste(c("Min=","1Quartile=","Mediane=","Moyenne=","3Quartile=","Max="), summary(donneesTable[,i],digits = 3)), pch="+",cex = 0.6);summary(donneesTable[,i],digits = 3);
+  
+  	boxplot(donneesTable[,i],main =paste("BOXPLOT DE LA VARIABLE : ",str_to_upper(colnames((donneesTable)[i]))),ylab =paste("variable :",colnames((donneesTable)[i])) )
+  }
+}
+
+```
+
+#HIST_bOX
+```{r}
+
+HistBoxTable(2,df)
+
+```
+# ===============================================================
+# Analyse descriptive : quali
+# ===============================================================
+#fonction de frequence et effectifs
+```{r}
+
+efreq=function(x)
+{
+	eff=table(x);seff=sum(eff);n=length(eff)
+	effreq=cbind(rbind(eff,eff/seff),c(seff,1))
+	
+	dimnames(effreq)[[1]]=c("effectif","fréquence")
+	dimnames(effreq)[[2]][n+1]="Total"
+	
+	return(round(effreq,digits=3))
+}
+
+pieTable=function(x){
+   eff=table(x)
+   lbl=paste(levels(factor(x)),":n=",eff,",",round(100*eff/sum(eff),digits = 1),"%")
+   pie(eff,main = "SECTEUR",labels = lbl,init.angle = 90,clockwise = T) 
+} 
+
+bartable=function(x){
+  barplot(table(x),main = "DIAGRAMME DE LA VARIABLE ")
+  legend("topright",paste(levels(factor(x))),pch="+", cex = 0.8)
+}
+
+
+```
+
+#frequence, effectifs et 
+```{r}
+
+kable(df[,c(3,9,10,11,12)])
+
+for(i in df[,c(3,9,10,11,12)]){
+  print(levels(factor(i)))
+  print(efreq(i))
+  pieTable(i)
+  bartable(i)
+  print('')
+}
+
+
+```
+
+#function de normalite et histogrammme de normalite
+```{r}
+
+normalite=function(n,tableau){
+    for(i in n:ncol(tableau)){
+  
+     hist(tableau[[i]], freq = FALSE,main = paste("HISTOGRAMME DE  LA VARIABLE : ",str_to_upper(colnames((tableau)[i]))),xlab=colnames(tableau[,i]),ylab="effectifs")
+  
+    curve(dnorm(x, mean=mean(tableau[[i]],na.rm = TRUE), sd=sd(tableau[[i]],na.rm = TRUE)), add=TRUE,col="red")
+    
+     qqnorm(tableau[[i]], datax=TRUE,main = paste("HISTOGRAMME DE  LA VARIABLE : ",str_to_upper(colnames((tableau)[i]))),xlab=colnames(tableau[,i]),ylab="effectifs")
+    qqline(tableau[[i]],datax=TRUE,col="red")
+    
+  }
+
+}
+
+normalite(2,df)
+
+
+```
+# Diagramme de densité && QQ plot
+```{r}
+
+for(i in 2:ncol(df)){
+  
+  ggdensity(df[[i]], fill = "lightgray")
+  ggqqplot(df[[i]])
+}
+
+print(df %>% shapiro_test(cyl))
+
+```
+
+
+
+
+#fonction de test de normalité 
+# H0: il y'a normalité
+```{r}
+
+nomalite_test=function(x){
+  t1=''
+  test_1=shapiro.test(x);
+  shap=test_1$statistic;
+  Pvalue_1=test_1$p.value;
+  
+  if(Pvalue_1<0.05){
+
+    t1='on rejet H0, la variable ne suit pas une loi normale'
+  }
+  else {
+    t1='on ne peut pas rejeter H0, la variable suit une loi normale'
+  }
+  
+   paste("statistique de shapiro égale à :" ,shap," et une pvalue de :", Pvalue_1, "donc :",t1);
+
+}
+
+
+nomalite_ad=function(x){
+  t2=''
+  test_2=ad.test(x);
+  ad=test_2$statistic;
+  Pvalue_2=test_2$p.value;
+ 
+  if(Pvalue_2<0.05){
+
+    t2='on rejet H0, la variable ne suit pas une loi normale'
+  }
+  else {
+    t2='on ne peut pas rejeter H0, la variable suit une loi normale'
+  }
+
+   paste("statistique de ad.test égale à :" ,ad," et une pvalue de :", Pvalue_2, "donc :",t2);
+
+}
+
+
+
+shapiro.test(df$mpg)
+
+ad.test(df$mpg)
+
+ks.test(df$mpg,"pnorm",mean(df$mpg),sd(df$mpg))
+
+nomalite_test(df$mpg)
+
+```
+
+
+```{r}
+
+print(lapply(X =df[,2:12], FUN =nomalite_test))
+
+```
+
+```{r}
+
+print(apply(df[,2:12], 2,nomalite_ad))
+
+```
+
+# =============================================================================
+#  Statistiques bivariées (quanti * quanti)
+# ============================================================================
+
+#ggplot
+```{r}
+
+ggplot(df, aes(x=disp, y=hp)) +
+  geom_point()+
+  geom_text(label=as.factor(df[,12]))+
+   theme_bw()
+
+ggplot(df, aes(x=mpg, y=qsec, color=gear)) +
+  geom_point()+
+   geom_smooth(method=lm,se=FALSE)+
+  geom_text(label=as.factor(df$gear))+
+    theme_bw()
+
+```
+
+```{r}
+
+round(cor(df[,2:12],use = "complete.obs"),3)
+
+```
+#test de corréalation (cor.test)
+```{r}
+pval.Cor.test=function(x)
+{
+	p=ncol(x)
+	mp=matrix(0,nrow=p,ncol=p)
+	lqt=dimnames(x)
+	dimnames(mp)=list(lqt[[2]],lqt[[2]])
+	for (j in 1:(p-1)) 
+		for (k in (j+1):p)
+		{
+		mp[j,k]=cor.test(x[,j],x[,k])[[3]]
+		mp[k,j]=mp[j,k]
+		}
+
+  return(mp)
+}
+
+```
+
+#test de corréalation (k.test)
+```{r}
+pval.k.test=function(x)
+{
+	p=ncol(x)
+	mp=matrix(0,nrow=p,ncol=p)
+	lqt=dimnames(x)
+	dimnames(mp)=list(lqt[[2]],lqt[[2]])
+	for (j in 1:(p-1)) # boucle pour les lignes de la matrice
+		for (k in (j+1):p)# boucle pour les colonnes, après la diagonale
+		{
+		mp[j,k]=cor.test(x[,j],x[,k])[[3]]# remplissage de la case (j,k) de la matrice mp
+		mp[k,j]=mp[j,k]
+		}
+return(mp)
+}
+```
+
+#call
+```{r}
+
+print("cor.test")
+round(pval.Cor.test(df[,2:12]),3)
+paste('----------------------------')
+print('----------------------------')
+
+print("pval.k.test")
+round(pval.k.test(df[,2:12]),3)
+paste('----------------------------')
+print('----------------------------')
+
+print('mp<0.05 # condition par rapport au seuil alpha pour le refus ou acceptation de Ho')
+round(pval.k.test(df[,2:12]),3)<0.05
+```
+#Matrice de correaltion graphique
+```{r}
+ggpairs(df[,2:12])
+heatmap(x=cor(df[,2:12],use="complete.obs"),symm = TRUE)
+
+```
+```{r}
+chart.Correlation(df[,2:12], histogram=TRUE, pch=19)
+
+```
+```{r}
+panel.cor_simple=function(x, y, digits=2, prefix="", cex.cor)
+    {
+        usr =par("usr"); on.exit(par(usr))
+        par(usr = c(0, 1, 0, 1))
+        r =cor(x, y)
+        txt =format(c(r, 0.123456789), digits=digits)[1]
+        txt =paste(prefix, txt, sep="")
+        if(missing(cex.cor)) cex=0.8/strwidth(txt)
+        test=cor.test(x,y)
+        Signif=symnum(test$p.value, corr = FALSE, na = FALSE,
+                      cutpoints = c(0, 0.001, 0.01, 0.05, 0.1, 1),
+                      symbols = c("***", "**", "*", ".", " "))
+
+        text(0.5, 0.5, txt, cex = cex * abs(r))
+        text(.8, .8, Signif, cex=cex, col=2)
+}
+
+pairs(as.matrix(df[,2:12]),lower.panel=panel.smooth, upper.panel=panel.cor_simple)
+
+```
+# =============================================================================
+#  Statistiques bivariées (quali * quali)
+# ============================================================================
+# tableau de contingence , les profils lignes
+```{r}
+ 
+tc=function(X,Y)
+{
+	tc=table(X,Y); tc=cbind(tc,Total=apply(tc,1,sum)); 
+	tc=rbind(tc,Total=apply(tc,2,sum));
+	return(tc)
+}
+
+ 
+pl=function(X,Y)
+{
+	tc=table(X,Y); suml=apply(tc,1,sum); 
+	sumc=apply(tc,2,sum);
+	pl=rbind(tc/suml,Ensemble=sumc/sum(sumc)); 
+	return(pl)
+}
+
+testkideux=function(x,y)
+{
+  t=''
+	t1=chisq.test(table(x,y));
+	kideux=t1$statistic;
+	ddl=t1$parameter;
+	Pvalue=t1$p.value;
+	
+	if(Pvalue<0.05){
+	  t='on rejet HO, les deux variables sont liées'
+	}else{
+	  t='on ne peut pas rejeter Ho, les deux variables ne sont pas liées'
+	}
+	
+	text=paste("statistique de Khideux égale à " ,kideux, " ddl de " ,ddl," et une pvalue de ", Pvalue, "donc :",t);
+	return(text) 
+}
+
+
+```
+
+```{r}
+print('Tableau de contingence')
+tc(df$cyl,df$carb)
+print('')
+print('Profil ligne')
+pl(df$cyl,df$carb)
+barplot(tc(df$cyl,df$carb),main ="cyl * carb",legend.text =rownames(tc(df$cyl,df$carb)),col =2:5,args.legend=list(x="top"))
+
+```
+##Test du khi-deux  pour voir si la couleur est liée à la tapenade.
+#Test d'indépendance 
+#Ho: la couleur et la tapenade sont indépendantes
+```{r}
+testkideux(df$cyl,df$carb)
+
+```
+
+```{r}
+
+plot_histogram(df)
+plot_bar(df)
+plot_bar(df, with = "carb")
+
+```
+```{r}
+#create_report(df)
+
+```
+
+
+

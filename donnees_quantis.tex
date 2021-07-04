@@ -1,0 +1,1203 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Untitled},
+  pdfauthor={Jeros},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Untitled}
+\author{Jeros}
+\date{26/06/2021}
+
+\begin{document}
+\maketitle
+
+\hypertarget{section}{%
+\section{=============================================================================}\label{section}}
+
+\hypertarget{importation-des-packages-de-travail}{%
+\section{IMPORTATION DES PACKAGES DE
+TRAVAIL}\label{importation-des-packages-de-travail}}
+
+\hypertarget{section-1}{%
+\section{=============================================================================}\label{section-1}}
+
+\#\url{https://fxjollois.github.io/cours-2016-2017/index.html}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{if}\NormalTok{(}\SpecialCharTok{!}\FunctionTok{require}\NormalTok{(}\StringTok{"pacman"}\NormalTok{))\{}
+    \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{install.packages}\NormalTok{(}\StringTok{"pacman"}\NormalTok{))}
+    \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{library}\NormalTok{(}\StringTok{"pacman"}\NormalTok{))}
+\NormalTok{\} }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Loading required package: pacman
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \FunctionTok{suppressMessages}\NormalTok{(}\FunctionTok{p\_load}\NormalTok{(}\StringTok{"gganimate"}\NormalTok{,}\StringTok{"ggplot2"}\NormalTok{,}\StringTok{"ggthemes"}\NormalTok{,}\StringTok{"ggThemeAssist"}\NormalTok{,}\StringTok{"scales"}\NormalTok{,}\StringTok{"DataExplorer"}\NormalTok{,}\StringTok{"FactoMineR"}\NormalTok{,}\StringTok{"corrr"}\NormalTok{,}\StringTok{"PerformanceAnalytics"}\NormalTok{,}\StringTok{"knitr"}\NormalTok{,}\StringTok{"GGally"}\NormalTok{,}\StringTok{"corrplot"}\NormalTok{,}\StringTok{"ggcorrplot"}\NormalTok{,}\StringTok{"corpcor"}\NormalTok{,}\StringTok{"stringr"}\NormalTok{,}\StringTok{"ggsci"}\NormalTok{,}\StringTok{"qqplotr"}\NormalTok{,}\StringTok{"nortest"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-2}{%
+\section{=============================================================================}\label{section-2}}
+
+\hypertarget{declaration-du-dossier-de-travail}{%
+\section{DECLARATION DU DOSSIER DE
+TRAVAIL}\label{declaration-du-dossier-de-travail}}
+
+\hypertarget{section-3}{%
+\section{=============================================================================}\label{section-3}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{setwd}\NormalTok{(}\StringTok{"D:/Navigation/Téléchargements/01\_Statistique/revision\_R/MTCARS"}\NormalTok{)}
+\FunctionTok{paste}\NormalTok{(}\StringTok{"le dossier de travail est:"}\NormalTok{,}\FunctionTok{getwd}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "le dossier de travail est: D:/Navigation/Téléchargements/01_Statistique/revision_R/MTCARS"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(}\StringTok{"le fichier"}\NormalTok{, }\FunctionTok{list.files}\NormalTok{(), }\StringTok{"se trouve dans ce dossier"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "le fichier donnees_quantis.Rmd se trouve dans ce dossier"
+## [2] "le fichier mtcars.csv se trouve dans ce dossier"
+\end{verbatim}
+
+\hypertarget{section-4}{%
+\section{=============================================================================}\label{section-4}}
+
+\hypertarget{importation-des-donnuxe9es}{%
+\section{IMPORTATION DES DONNÉES}\label{importation-des-donnuxe9es}}
+
+\hypertarget{section-5}{%
+\section{=============================================================================}\label{section-5}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\OtherTok{=}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"mtcars.csv"}\NormalTok{,}\AttributeTok{sep =} \StringTok{","}\NormalTok{,}\AttributeTok{dec =} \StringTok{"."}\NormalTok{ , }\AttributeTok{header =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-6}{%
+\section{===============================================================}\label{section-6}}
+
+\hypertarget{analyse-de-la-forme-des-donnuxe9es-struture}{%
+\section{Analyse de la forme des données
+(struture)}\label{analyse-de-la-forme-des-donnuxe9es-struture}}
+
+\hypertarget{section-7}{%
+\section{===============================================================}\label{section-7}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    32 obs. of  12 variables:
+##  $ model: chr  "Mazda RX4" "Mazda RX4 Wag" "Datsun 710" "Hornet 4 Drive" ...
+##  $ mpg  : num  21 21 22.8 21.4 18.7 18.1 14.3 24.4 22.8 19.2 ...
+##  $ cyl  : int  6 6 4 6 8 6 8 4 4 6 ...
+##  $ disp : num  160 160 108 258 360 ...
+##  $ hp   : int  110 110 93 110 175 105 245 62 95 123 ...
+##  $ drat : num  3.9 3.9 3.85 3.08 3.15 2.76 3.21 3.69 3.92 3.92 ...
+##  $ wt   : num  2.62 2.88 2.32 3.21 3.44 ...
+##  $ qsec : num  16.5 17 18.6 19.4 17 ...
+##  $ vs   : int  0 0 1 1 0 1 0 1 1 1 ...
+##  $ am   : int  1 1 1 0 0 0 0 0 0 0 ...
+##  $ gear : int  4 4 4 3 3 3 3 4 4 4 ...
+##  $ carb : int  4 4 1 1 2 1 4 2 2 4 ...
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot\_str}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{introduce}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   rows columns discrete_columns continuous_columns all_missing_columns
+## 1   32      12                1                 11                   0
+##   total_missing_values complete_rows total_observations memory_usage
+## 1                    0            32                384         7712
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot\_intro}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Les dimensions du dataframe\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Les dimensions du dataframe"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\FunctionTok{dim}\NormalTok{(df))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 32 12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "----------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Summary\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Summary"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     model                mpg             cyl             disp      
+##  Length:32          Min.   :10.40   Min.   :4.000   Min.   : 71.1  
+##  Class :character   1st Qu.:15.43   1st Qu.:4.000   1st Qu.:120.8  
+##  Mode  :character   Median :19.20   Median :6.000   Median :196.3  
+##                     Mean   :20.09   Mean   :6.188   Mean   :230.7  
+##                     3rd Qu.:22.80   3rd Qu.:8.000   3rd Qu.:326.0  
+##                     Max.   :33.90   Max.   :8.000   Max.   :472.0  
+##        hp             drat             wt             qsec      
+##  Min.   : 52.0   Min.   :2.760   Min.   :1.513   Min.   :14.50  
+##  1st Qu.: 96.5   1st Qu.:3.080   1st Qu.:2.581   1st Qu.:16.89  
+##  Median :123.0   Median :3.695   Median :3.325   Median :17.71  
+##  Mean   :146.7   Mean   :3.597   Mean   :3.217   Mean   :17.85  
+##  3rd Qu.:180.0   3rd Qu.:3.920   3rd Qu.:3.610   3rd Qu.:18.90  
+##  Max.   :335.0   Max.   :4.930   Max.   :5.424   Max.   :22.90  
+##        vs               am              gear            carb      
+##  Min.   :0.0000   Min.   :0.0000   Min.   :3.000   Min.   :1.000  
+##  1st Qu.:0.0000   1st Qu.:0.0000   1st Qu.:3.000   1st Qu.:2.000  
+##  Median :0.0000   Median :0.0000   Median :4.000   Median :2.000  
+##  Mean   :0.4375   Mean   :0.4062   Mean   :3.688   Mean   :2.812  
+##  3rd Qu.:1.0000   3rd Qu.:1.0000   3rd Qu.:4.000   3rd Qu.:4.000  
+##  Max.   :1.0000   Max.   :1.0000   Max.   :5.000   Max.   :8.000
+\end{verbatim}
+
+\#forme de distribution et de dispersion
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{kurtosis}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)}
+\NormalTok{\{}
+\NormalTok{    n}\OtherTok{=}\FunctionTok{length}\NormalTok{(x)}
+\NormalTok{    moy}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x)}
+\NormalTok{    etype}\OtherTok{=}\FunctionTok{sd}\NormalTok{(x)}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{((n}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n)}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{mean}\NormalTok{((x}\SpecialCharTok{{-}}\NormalTok{moy)}\SpecialCharTok{\^{}}\DecValTok{4}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(etype}\SpecialCharTok{\^{}}\DecValTok{4}\NormalTok{))}
+\NormalTok{\}}
+
+
+\NormalTok{skewness}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)}
+\NormalTok{\{}
+\NormalTok{    n}\OtherTok{=}\FunctionTok{length}\NormalTok{(x)}
+\NormalTok{    moy}\OtherTok{=}\FunctionTok{mean}\NormalTok{(x)}
+\NormalTok{    etype}\OtherTok{=}\FunctionTok{sd}\NormalTok{(x)}\SpecialCharTok{*}\FunctionTok{sqrt}\NormalTok{((n}\DecValTok{{-}1}\NormalTok{)}\SpecialCharTok{/}\NormalTok{n)}
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{mean}\NormalTok{((x}\SpecialCharTok{{-}}\NormalTok{moy)}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{)}\SpecialCharTok{/}\NormalTok{(etype}\SpecialCharTok{\^{}}\DecValTok{3}\NormalTok{))}
+\NormalTok{\}}
+
+\NormalTok{q1}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{return}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(x,}\FloatTok{0.25}\NormalTok{))}
+\NormalTok{q2}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{return}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(x,}\FloatTok{0.5}\NormalTok{))}
+\NormalTok{q3}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x) }\FunctionTok{return}\NormalTok{(}\FunctionTok{quantile}\NormalTok{(x,}\FloatTok{0.75}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\#les valeurs manquantes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot\_missing}\NormalTok{(df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#missingdf$df \%\textless{}\textgreater{}\% mutate(index = row\_number()) }
+\CommentTok{\#missingdf$df}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{section-8}{%
+\section{===============================================================}\label{section-8}}
+
+\hypertarget{analyse-descriptive-quanti}{%
+\section{Analyse descriptive :
+quanti}\label{analyse-descriptive-quanti}}
+
+\hypertarget{section-9}{%
+\section{===============================================================}\label{section-9}}
+
+\#FONCTIONS histogramme et boxplot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{histTable}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(n,donneesTable)\{}
+  \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ n}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(donneesTable)) \{}
+    \FunctionTok{hist}\NormalTok{(donneesTable[,i],}\AttributeTok{main =}\FunctionTok{paste}\NormalTok{(}\StringTok{"Histogramme de la variable : "}\NormalTok{, }\FunctionTok{colnames}\NormalTok{((donneesTable)[i])),}
+         \AttributeTok{xlab=}\FunctionTok{colnames}\NormalTok{((donneesTable)[i]),}\AttributeTok{ylab=}\StringTok{"Effectifs"}\NormalTok{)}
+\NormalTok{    \}}
+\NormalTok{\}}
+
+
+\NormalTok{boxTable}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(n,donneesTable)\{}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ n}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(donneesTable)) \{}
+  \FunctionTok{boxplot}\NormalTok{(donneesTable[,i],}\AttributeTok{main =}\FunctionTok{paste}\NormalTok{(}\StringTok{"Boxplot de la variable : "}\NormalTok{,}\FunctionTok{colnames}\NormalTok{((donneesTable)[i])),}
+          \AttributeTok{ylab =}\FunctionTok{paste}\NormalTok{(}\StringTok{"variable :"}\NormalTok{,}\FunctionTok{colnames}\NormalTok{((donneesTable)[i])) )}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\#Histogramme
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{histTable}\NormalTok{(}\DecValTok{2}\NormalTok{,df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-1.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-2.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-3.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-4.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-5.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-6.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-7.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-8.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-9.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-10.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-10-11.pdf}
+
+\#Boxplot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxTable}\NormalTok{(}\DecValTok{2}\NormalTok{,df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-1.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-2.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-3.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-4.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-5.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-6.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-7.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-8.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-9.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-10.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-11-11.pdf}
+\#FONCTION HIST\_bOX
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{HistBoxTable}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(n,donneesTable)\{}
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ n}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(donneesTable)) \{}
+  
+    \FunctionTok{hist}\NormalTok{(donneesTable[,i],}\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"HISTOGRAMME DE  LA VARIABLE : "}\NormalTok{,}\FunctionTok{str\_to\_upper}\NormalTok{(}\FunctionTok{colnames}\NormalTok{((donneesTable)[i]))),}\AttributeTok{xlab=}\FunctionTok{colnames}\NormalTok{((donneesTable)[i]),}\AttributeTok{ylab=}\StringTok{"effectifs"}\NormalTok{);}
+    \FunctionTok{legend}\NormalTok{(}\StringTok{"topleft"}\NormalTok{, }\FunctionTok{paste}\NormalTok{(}\FunctionTok{c}\NormalTok{(}\StringTok{"Min="}\NormalTok{,}\StringTok{"1Quartile="}\NormalTok{,}\StringTok{"Mediane="}\NormalTok{,}\StringTok{"Moyenne="}\NormalTok{,}\StringTok{"3Quartile="}\NormalTok{,}\StringTok{"Max="}\NormalTok{), }\FunctionTok{summary}\NormalTok{(donneesTable[,i],}\AttributeTok{digits =} \DecValTok{3}\NormalTok{)), }\AttributeTok{pch=}\StringTok{"+"}\NormalTok{,}\AttributeTok{cex =} \FloatTok{0.6}\NormalTok{);}\FunctionTok{summary}\NormalTok{(donneesTable[,i],}\AttributeTok{digits =} \DecValTok{3}\NormalTok{);}
+  
+    \FunctionTok{boxplot}\NormalTok{(donneesTable[,i],}\AttributeTok{main =}\FunctionTok{paste}\NormalTok{(}\StringTok{"BOXPLOT DE LA VARIABLE : "}\NormalTok{,}\FunctionTok{str\_to\_upper}\NormalTok{(}\FunctionTok{colnames}\NormalTok{((donneesTable)[i]))),}\AttributeTok{ylab =}\FunctionTok{paste}\NormalTok{(}\StringTok{"variable :"}\NormalTok{,}\FunctionTok{colnames}\NormalTok{((donneesTable)[i])) )}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\#HIST\_bOX
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{HistBoxTable}\NormalTok{(}\DecValTok{2}\NormalTok{,df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-1.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-2.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-3.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-4.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-5.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-6.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-7.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-8.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-9.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-10.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-11.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-12.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-13.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-14.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-15.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-16.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-17.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-18.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-19.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-20.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-21.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-13-22.pdf}
+\# =============================================================== \#
+Analyse descriptive : quali \#
+===============================================================
+\#fonction de frequence et effectifs
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{efreq}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)}
+\NormalTok{\{}
+\NormalTok{    eff}\OtherTok{=}\FunctionTok{table}\NormalTok{(x);seff}\OtherTok{=}\FunctionTok{sum}\NormalTok{(eff);n}\OtherTok{=}\FunctionTok{length}\NormalTok{(eff)}
+\NormalTok{    effreq}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(}\FunctionTok{rbind}\NormalTok{(eff,eff}\SpecialCharTok{/}\NormalTok{seff),}\FunctionTok{c}\NormalTok{(seff,}\DecValTok{1}\NormalTok{))}
+    
+    \FunctionTok{dimnames}\NormalTok{(effreq)[[}\DecValTok{1}\NormalTok{]]}\OtherTok{=}\FunctionTok{c}\NormalTok{(}\StringTok{"effectif"}\NormalTok{,}\StringTok{"fréquence"}\NormalTok{)}
+    \FunctionTok{dimnames}\NormalTok{(effreq)[[}\DecValTok{2}\NormalTok{]][n}\SpecialCharTok{+}\DecValTok{1}\NormalTok{]}\OtherTok{=}\StringTok{"Total"}
+    
+    \FunctionTok{return}\NormalTok{(}\FunctionTok{round}\NormalTok{(effreq,}\AttributeTok{digits=}\DecValTok{3}\NormalTok{))}
+\NormalTok{\}}
+
+\NormalTok{pieTable}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)\{}
+\NormalTok{   eff}\OtherTok{=}\FunctionTok{table}\NormalTok{(x)}
+\NormalTok{   lbl}\OtherTok{=}\FunctionTok{paste}\NormalTok{(}\FunctionTok{levels}\NormalTok{(}\FunctionTok{factor}\NormalTok{(x)),}\StringTok{":n="}\NormalTok{,eff,}\StringTok{","}\NormalTok{,}\FunctionTok{round}\NormalTok{(}\DecValTok{100}\SpecialCharTok{*}\NormalTok{eff}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(eff),}\AttributeTok{digits =} \DecValTok{1}\NormalTok{),}\StringTok{"\%"}\NormalTok{)}
+   \FunctionTok{pie}\NormalTok{(eff,}\AttributeTok{main =} \StringTok{"SECTEUR"}\NormalTok{,}\AttributeTok{labels =}\NormalTok{ lbl,}\AttributeTok{init.angle =} \DecValTok{90}\NormalTok{,}\AttributeTok{clockwise =}\NormalTok{ T) }
+\NormalTok{\} }
+
+\NormalTok{bartable}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)\{}
+  \FunctionTok{barplot}\NormalTok{(}\FunctionTok{table}\NormalTok{(x),}\AttributeTok{main =} \StringTok{"DIAGRAMME DE LA VARIABLE "}\NormalTok{)}
+  \FunctionTok{legend}\NormalTok{(}\StringTok{"topright"}\NormalTok{,}\FunctionTok{paste}\NormalTok{(}\FunctionTok{levels}\NormalTok{(}\FunctionTok{factor}\NormalTok{(x))),}\AttributeTok{pch=}\StringTok{"+"}\NormalTok{, }\AttributeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\#frequence, effectifs et
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{kable}\NormalTok{(df[,}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{)])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}rrrrr@{}}
+\toprule
+cyl & vs & am & gear & carb \\
+\midrule
+\endhead
+6 & 0 & 1 & 4 & 4 \\
+6 & 0 & 1 & 4 & 4 \\
+4 & 1 & 1 & 4 & 1 \\
+6 & 1 & 0 & 3 & 1 \\
+8 & 0 & 0 & 3 & 2 \\
+6 & 1 & 0 & 3 & 1 \\
+8 & 0 & 0 & 3 & 4 \\
+4 & 1 & 0 & 4 & 2 \\
+4 & 1 & 0 & 4 & 2 \\
+6 & 1 & 0 & 4 & 4 \\
+6 & 1 & 0 & 4 & 4 \\
+8 & 0 & 0 & 3 & 3 \\
+8 & 0 & 0 & 3 & 3 \\
+8 & 0 & 0 & 3 & 3 \\
+8 & 0 & 0 & 3 & 4 \\
+8 & 0 & 0 & 3 & 4 \\
+8 & 0 & 0 & 3 & 4 \\
+4 & 1 & 1 & 4 & 1 \\
+4 & 1 & 1 & 4 & 2 \\
+4 & 1 & 1 & 4 & 1 \\
+4 & 1 & 0 & 3 & 1 \\
+8 & 0 & 0 & 3 & 2 \\
+8 & 0 & 0 & 3 & 2 \\
+8 & 0 & 0 & 3 & 4 \\
+8 & 0 & 0 & 3 & 2 \\
+4 & 1 & 1 & 4 & 1 \\
+4 & 0 & 1 & 5 & 2 \\
+4 & 1 & 1 & 5 & 2 \\
+8 & 0 & 1 & 5 & 4 \\
+6 & 0 & 1 & 5 & 6 \\
+8 & 0 & 1 & 5 & 8 \\
+4 & 1 & 1 & 4 & 2 \\
+\bottomrule
+\end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ df[,}\FunctionTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{9}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{11}\NormalTok{,}\DecValTok{12}\NormalTok{)])\{}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{levels}\NormalTok{(}\FunctionTok{factor}\NormalTok{(i)))}
+  \FunctionTok{print}\NormalTok{(}\FunctionTok{efreq}\NormalTok{(i))}
+  \FunctionTok{pieTable}\NormalTok{(i)}
+  \FunctionTok{bartable}\NormalTok{(i)}
+  \FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "4" "6" "8"
+##                4     6      8 Total
+## effectif  11.000 7.000 14.000    32
+## fréquence  0.344 0.219  0.438     1
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-1.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-2.pdf}
+
+\begin{verbatim}
+## [1] ""
+## [1] "0" "1"
+##                0      1 Total
+## effectif  18.000 14.000    32
+## fréquence  0.562  0.438     1
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-3.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-4.pdf}
+
+\begin{verbatim}
+## [1] ""
+## [1] "0" "1"
+##                0      1 Total
+## effectif  19.000 13.000    32
+## fréquence  0.594  0.406     1
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-5.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-6.pdf}
+
+\begin{verbatim}
+## [1] ""
+## [1] "3" "4" "5"
+##                3      4     5 Total
+## effectif  15.000 12.000 5.000    32
+## fréquence  0.469  0.375 0.156     1
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-7.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-8.pdf}
+
+\begin{verbatim}
+## [1] ""
+## [1] "1" "2" "3" "4" "6" "8"
+##               1      2     3      4     6     8 Total
+## effectif  7.000 10.000 3.000 10.000 1.000 1.000    32
+## fréquence 0.219  0.312 0.094  0.312 0.031 0.031     1
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-9.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-15-10.pdf}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\#function de normalite et histogrammme de normalite
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{normalite}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(n,tableau)\{}
+    \ControlFlowTok{for}\NormalTok{(i }\ControlFlowTok{in}\NormalTok{ n}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(tableau))\{}
+  
+     \FunctionTok{hist}\NormalTok{(tableau[[i]], }\AttributeTok{freq =} \ConstantTok{FALSE}\NormalTok{,}\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"HISTOGRAMME DE  LA VARIABLE : "}\NormalTok{,}\FunctionTok{str\_to\_upper}\NormalTok{(}\FunctionTok{colnames}\NormalTok{((tableau)[i]))),}\AttributeTok{xlab=}\FunctionTok{colnames}\NormalTok{(tableau[,i]),}\AttributeTok{ylab=}\StringTok{"effectifs"}\NormalTok{)}
+  
+    \FunctionTok{curve}\NormalTok{(}\FunctionTok{dnorm}\NormalTok{(x, }\AttributeTok{mean=}\FunctionTok{mean}\NormalTok{(tableau[[i]],}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{), }\AttributeTok{sd=}\FunctionTok{sd}\NormalTok{(tableau[[i]],}\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)), }\AttributeTok{add=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+    
+     \FunctionTok{qqnorm}\NormalTok{(tableau[[i]], }\AttributeTok{datax=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{main =} \FunctionTok{paste}\NormalTok{(}\StringTok{"HISTOGRAMME DE  LA VARIABLE : "}\NormalTok{,}\FunctionTok{str\_to\_upper}\NormalTok{(}\FunctionTok{colnames}\NormalTok{((tableau)[i]))),}\AttributeTok{xlab=}\FunctionTok{colnames}\NormalTok{(tableau[,i]),}\AttributeTok{ylab=}\StringTok{"effectifs"}\NormalTok{)}
+    \FunctionTok{qqline}\NormalTok{(tableau[[i]],}\AttributeTok{datax=}\ConstantTok{TRUE}\NormalTok{,}\AttributeTok{col=}\StringTok{"red"}\NormalTok{)}
+    
+\NormalTok{  \}}
+
+\NormalTok{\}}
+
+\FunctionTok{normalite}\NormalTok{(}\DecValTok{2}\NormalTok{,df)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-1.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-2.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-3.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-4.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-5.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-6.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-7.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-8.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-9.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-10.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-11.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-12.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-13.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-14.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-15.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-16.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-17.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-18.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-19.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-20.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-21.pdf}
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-16-22.pdf}
+
+\#fonction de test de normalité \# H0: il y'a normalité
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# nomalite\_test=function(x)\{}
+\CommentTok{\#   t1=\textquotesingle{}\textquotesingle{}}
+\CommentTok{\#   t2=\textquotesingle{}\textquotesingle{}}
+\CommentTok{\#   t3=\textquotesingle{}\textquotesingle{}}
+\CommentTok{\#   \# test\_1=shapiro.test(x)}
+\CommentTok{\#   \# shap=test\_1$statistic;}
+\CommentTok{\#   \# ddl\_1=test\_1$parameter;}
+\CommentTok{\#   \# Pvalue\_1=test\_1$p.value;}
+\CommentTok{\#   }
+\CommentTok{\#   test\_2=ks.test(x,"pnorm")}
+\CommentTok{\#   ks=test\_2$statistic;}
+\CommentTok{\#   ddl\_2=test\_2$parameter;}
+\CommentTok{\#   Pvalue\_2=test\_2$p.value;}
+\CommentTok{\#   }
+\CommentTok{\#   \# test\_3=ad.test(x)}
+\CommentTok{\#   \# ad=test\_3$statistic;}
+\CommentTok{\#   \# ddl\_3=test\_3$parameter;}
+\CommentTok{\#   \# Pvalue\_3=test\_3$p.value;}
+\CommentTok{\#   \# }
+\CommentTok{\#   \# if(Pvalue\_1\textless{}0.05)\{}
+\CommentTok{\#   \#   }
+\CommentTok{\#   \#   t1=\textquotesingle{}on rejet H0, la variable ne suit pas une loi normale\textquotesingle{}}
+\CommentTok{\#   \# \}}
+\CommentTok{\#   \# else \{}
+\CommentTok{\#   \#   t1=\textquotesingle{}on ne peut pas rejeter H0, la variable suit une loi normale\textquotesingle{}}
+\CommentTok{\#   \# \}}
+\CommentTok{\#   \# }
+\CommentTok{\#   if(Pvalue\_2\textless{}0.05)\{}
+\CommentTok{\#     }
+\CommentTok{\#     t2=\textquotesingle{}on rejet H0, la variable ne suit pas une loi normale\textquotesingle{}}
+\CommentTok{\#   \}}
+\CommentTok{\#   else \{}
+\CommentTok{\#     t2=\textquotesingle{}on ne peut pas rejeter H0, la variable suit une loi normale\textquotesingle{}}
+\CommentTok{\#   \}}
+\CommentTok{\#   }
+\CommentTok{\#   \# if(Pvalue\_3\textless{}0.05)\{}
+\CommentTok{\#   \#   }
+\CommentTok{\#   \#   t3=\textquotesingle{}on rejet H0, la variable ne suit pas une loi normale\textquotesingle{}}
+\CommentTok{\#   \# \}}
+\CommentTok{\#   \# else \{}
+\CommentTok{\#   \#   t3=\textquotesingle{}on ne peut pas rejeter H0, la variable suit une loi normale\textquotesingle{}}
+\CommentTok{\#   \# \}}
+\CommentTok{\#   \# }
+\CommentTok{\#   }
+\CommentTok{\#   }
+\CommentTok{\#   \# paste("statistique de shapiro égale à " ,ad, " ddl de " ,ddl\_3," et une pvalue de ", Pvalue\_3, "donc :",t3);}
+\CommentTok{\#   print(\textquotesingle{}{-}{-}{-}{-}\textquotesingle{})}
+\CommentTok{\#   paste("statistique de shapiro égale à " ,ks, " ddl de " ,ddl\_2," et une pvalue de ", Pvalue\_2, "donc :",t2);}
+\CommentTok{\# }
+\CommentTok{\# \}}
+\CommentTok{\# }
+\CommentTok{\# }
+\CommentTok{\# for(i in 2:ncol(df))\{}
+\CommentTok{\#   paste(\textquotesingle{}la colonne numero: \textquotesingle{},i)}
+\CommentTok{\#   nomalite\_test(i)}
+\CommentTok{\# \}}
+
+\FunctionTok{shapiro.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{mpg)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  df$mpg
+## W = 0.94756, p-value = 0.1229
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ks.test}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{mpg,}\StringTok{"pnorm"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in ks.test(df$mpg, "pnorm"): ties should not be present for the
+## Kolmogorov-Smirnov test
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  One-sample Kolmogorov-Smirnov test
+## 
+## data:  df$mpg
+## D = 1, p-value < 2.2e-16
+## alternative hypothesis: two-sided
+\end{verbatim}
+
+\hypertarget{section-10}{%
+\section{=============================================================================}\label{section-10}}
+
+\hypertarget{statistiques-bivariuxe9es-quanti-quanti}{%
+\section{Statistiques bivariées (quanti *
+quanti)}\label{statistiques-bivariuxe9es-quanti-quanti}}
+
+\hypertarget{section-11}{%
+\section{============================================================================}\label{section-11}}
+
+\#ggplot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{disp, }\AttributeTok{y=}\NormalTok{hp)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{label=}\FunctionTok{as.factor}\NormalTok{(df[,}\DecValTok{12}\NormalTok{]))}\SpecialCharTok{+}
+   \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggplot}\NormalTok{(df, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x=}\NormalTok{mpg, }\AttributeTok{y=}\NormalTok{qsec, }\AttributeTok{color=}\NormalTok{gear)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{()}\SpecialCharTok{+}
+   \FunctionTok{geom\_smooth}\NormalTok{(}\AttributeTok{method=}\NormalTok{lm,}\AttributeTok{se=}\ConstantTok{FALSE}\NormalTok{)}\SpecialCharTok{+}
+  \FunctionTok{geom\_text}\NormalTok{(}\AttributeTok{label=}\FunctionTok{as.factor}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{gear))}\SpecialCharTok{+}
+    \FunctionTok{theme\_bw}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-18-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{cor}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{],}\AttributeTok{use =} \StringTok{"complete.obs"}\NormalTok{),}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         mpg    cyl   disp     hp   drat     wt   qsec     vs     am   gear
+## mpg   1.000 -0.852 -0.848 -0.776  0.681 -0.868  0.419  0.664  0.600  0.480
+## cyl  -0.852  1.000  0.902  0.832 -0.700  0.782 -0.591 -0.811 -0.523 -0.493
+## disp -0.848  0.902  1.000  0.791 -0.710  0.888 -0.434 -0.710 -0.591 -0.556
+## hp   -0.776  0.832  0.791  1.000 -0.449  0.659 -0.708 -0.723 -0.243 -0.126
+## drat  0.681 -0.700 -0.710 -0.449  1.000 -0.712  0.091  0.440  0.713  0.700
+## wt   -0.868  0.782  0.888  0.659 -0.712  1.000 -0.175 -0.555 -0.692 -0.583
+## qsec  0.419 -0.591 -0.434 -0.708  0.091 -0.175  1.000  0.745 -0.230 -0.213
+## vs    0.664 -0.811 -0.710 -0.723  0.440 -0.555  0.745  1.000  0.168  0.206
+## am    0.600 -0.523 -0.591 -0.243  0.713 -0.692 -0.230  0.168  1.000  0.794
+## gear  0.480 -0.493 -0.556 -0.126  0.700 -0.583 -0.213  0.206  0.794  1.000
+## carb -0.551  0.527  0.395  0.750 -0.091  0.428 -0.656 -0.570  0.058  0.274
+##        carb
+## mpg  -0.551
+## cyl   0.527
+## disp  0.395
+## hp    0.750
+## drat -0.091
+## wt    0.428
+## qsec -0.656
+## vs   -0.570
+## am    0.058
+## gear  0.274
+## carb  1.000
+\end{verbatim}
+
+\#test de corréalation (cor.test)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pval.Cor.test}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)}
+\NormalTok{\{}
+\NormalTok{    p}\OtherTok{=}\FunctionTok{ncol}\NormalTok{(x)}
+\NormalTok{    mp}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\NormalTok{p,}\AttributeTok{ncol=}\NormalTok{p)}
+\NormalTok{    lqt}\OtherTok{=}\FunctionTok{dimnames}\NormalTok{(x)}
+    \FunctionTok{dimnames}\NormalTok{(mp)}\OtherTok{=}\FunctionTok{list}\NormalTok{(lqt[[}\DecValTok{2}\NormalTok{]],lqt[[}\DecValTok{2}\NormalTok{]])}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(p}\DecValTok{{-}1}\NormalTok{)) }
+        \ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in}\NormalTok{ (j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{p)}
+\NormalTok{        \{}
+\NormalTok{        mp[j,k]}\OtherTok{=}\FunctionTok{cor.test}\NormalTok{(x[,j],x[,k])[[}\DecValTok{3}\NormalTok{]]}
+\NormalTok{        mp[k,j]}\OtherTok{=}\NormalTok{mp[j,k]}
+\NormalTok{        \}}
+
+  \FunctionTok{return}\NormalTok{(mp)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\#test de corréalation (k.test)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pval.k.test}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x)}
+\NormalTok{\{}
+\NormalTok{    p}\OtherTok{=}\FunctionTok{ncol}\NormalTok{(x)}
+\NormalTok{    mp}\OtherTok{=}\FunctionTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\AttributeTok{nrow=}\NormalTok{p,}\AttributeTok{ncol=}\NormalTok{p)}
+\NormalTok{    lqt}\OtherTok{=}\FunctionTok{dimnames}\NormalTok{(x)}
+    \FunctionTok{dimnames}\NormalTok{(mp)}\OtherTok{=}\FunctionTok{list}\NormalTok{(lqt[[}\DecValTok{2}\NormalTok{]],lqt[[}\DecValTok{2}\NormalTok{]])}
+    \ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{(p}\DecValTok{{-}1}\NormalTok{)) }\CommentTok{\# boucle pour les lignes de la matrice}
+        \ControlFlowTok{for}\NormalTok{ (k }\ControlFlowTok{in}\NormalTok{ (j}\SpecialCharTok{+}\DecValTok{1}\NormalTok{)}\SpecialCharTok{:}\NormalTok{p)}\CommentTok{\# boucle pour les colonnes, après la diagonale}
+\NormalTok{        \{}
+\NormalTok{        mp[j,k]}\OtherTok{=}\FunctionTok{cor.test}\NormalTok{(x[,j],x[,k])[[}\DecValTok{3}\NormalTok{]]}\CommentTok{\# remplissage de la case (j,k) de la matrice mp}
+\NormalTok{        mp[k,j]}\OtherTok{=}\NormalTok{mp[j,k]}
+\NormalTok{        \}}
+\FunctionTok{return}\NormalTok{(mp)}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\#call
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"cor.test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "cor.test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{pval.Cor.test}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]),}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+## mpg  0.000 0.000 0.000 0.000 0.000 0.000 0.017 0.000 0.000 0.005 0.001
+## cyl  0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.002 0.004 0.002
+## disp 0.000 0.000 0.000 0.000 0.000 0.000 0.013 0.000 0.000 0.001 0.025
+## hp   0.000 0.000 0.000 0.000 0.010 0.000 0.000 0.000 0.180 0.493 0.000
+## drat 0.000 0.000 0.000 0.010 0.000 0.000 0.620 0.012 0.000 0.000 0.621
+## wt   0.000 0.000 0.000 0.000 0.000 0.000 0.339 0.001 0.000 0.000 0.015
+## qsec 0.017 0.000 0.013 0.000 0.620 0.339 0.000 0.000 0.206 0.243 0.000
+## vs   0.000 0.000 0.000 0.000 0.012 0.001 0.000 0.000 0.357 0.258 0.001
+## am   0.000 0.002 0.000 0.180 0.000 0.000 0.206 0.357 0.000 0.000 0.754
+## gear 0.005 0.004 0.001 0.493 0.000 0.000 0.243 0.258 0.000 0.000 0.129
+## carb 0.001 0.002 0.025 0.000 0.621 0.015 0.000 0.001 0.754 0.129 0.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "----------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "----------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{"pval.k.test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "pval.k.test"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{pval.k.test}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]),}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        mpg   cyl  disp    hp  drat    wt  qsec    vs    am  gear  carb
+## mpg  0.000 0.000 0.000 0.000 0.000 0.000 0.017 0.000 0.000 0.005 0.001
+## cyl  0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.000 0.002 0.004 0.002
+## disp 0.000 0.000 0.000 0.000 0.000 0.000 0.013 0.000 0.000 0.001 0.025
+## hp   0.000 0.000 0.000 0.000 0.010 0.000 0.000 0.000 0.180 0.493 0.000
+## drat 0.000 0.000 0.000 0.010 0.000 0.000 0.620 0.012 0.000 0.000 0.621
+## wt   0.000 0.000 0.000 0.000 0.000 0.000 0.339 0.001 0.000 0.000 0.015
+## qsec 0.017 0.000 0.013 0.000 0.620 0.339 0.000 0.000 0.206 0.243 0.000
+## vs   0.000 0.000 0.000 0.000 0.012 0.001 0.000 0.000 0.357 0.258 0.001
+## am   0.000 0.002 0.000 0.180 0.000 0.000 0.206 0.357 0.000 0.000 0.754
+## gear 0.005 0.004 0.001 0.493 0.000 0.000 0.243 0.258 0.000 0.000 0.129
+## carb 0.001 0.002 0.025 0.000 0.621 0.015 0.000 0.001 0.754 0.129 0.000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "----------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "----------------------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}mp\textless{}0.05 \# condition par rapport au seuil alpha pour le refus ou acceptation de Ho\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "mp<0.05 # condition par rapport au seuil alpha pour le refus ou acceptation de Ho"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{round}\NormalTok{(}\FunctionTok{pval.k.test}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]),}\DecValTok{3}\NormalTok{)}\SpecialCharTok{\textless{}}\FloatTok{0.05}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       mpg  cyl disp    hp  drat    wt  qsec    vs    am  gear  carb
+## mpg  TRUE TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## cyl  TRUE TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## disp TRUE TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE
+## hp   TRUE TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+## drat TRUE TRUE TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE
+## wt   TRUE TRUE TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE  TRUE
+## qsec TRUE TRUE TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE
+## vs   TRUE TRUE TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+## am   TRUE TRUE TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+## gear TRUE TRUE TRUE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE
+## carb TRUE TRUE TRUE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE
+\end{verbatim}
+
+\#Matrice de correaltion graphique
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{ggpairs}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-23-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{heatmap}\NormalTok{(}\AttributeTok{x=}\FunctionTok{cor}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{],}\AttributeTok{use=}\StringTok{"complete.obs"}\NormalTok{),}\AttributeTok{symm =} \ConstantTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-23-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{chart.Correlation}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{], }\AttributeTok{histogram=}\ConstantTok{TRUE}\NormalTok{, }\AttributeTok{pch=}\DecValTok{19}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-24-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{panel.cor\_simple}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x, y, }\AttributeTok{digits=}\DecValTok{2}\NormalTok{, }\AttributeTok{prefix=}\StringTok{""}\NormalTok{, cex.cor)}
+\NormalTok{    \{}
+\NormalTok{        usr }\OtherTok{=}\FunctionTok{par}\NormalTok{(}\StringTok{"usr"}\NormalTok{); }\FunctionTok{on.exit}\NormalTok{(}\FunctionTok{par}\NormalTok{(usr))}
+        \FunctionTok{par}\NormalTok{(}\AttributeTok{usr =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{1}\NormalTok{))}
+\NormalTok{        r }\OtherTok{=}\FunctionTok{cor}\NormalTok{(x, y)}
+\NormalTok{        txt }\OtherTok{=}\FunctionTok{format}\NormalTok{(}\FunctionTok{c}\NormalTok{(r, }\FloatTok{0.123456789}\NormalTok{), }\AttributeTok{digits=}\NormalTok{digits)[}\DecValTok{1}\NormalTok{]}
+\NormalTok{        txt }\OtherTok{=}\FunctionTok{paste}\NormalTok{(prefix, txt, }\AttributeTok{sep=}\StringTok{""}\NormalTok{)}
+        \ControlFlowTok{if}\NormalTok{(}\FunctionTok{missing}\NormalTok{(cex.cor)) cex}\OtherTok{=}\FloatTok{0.8}\SpecialCharTok{/}\FunctionTok{strwidth}\NormalTok{(txt)}
+\NormalTok{        test}\OtherTok{=}\FunctionTok{cor.test}\NormalTok{(x,y)}
+\NormalTok{        Signif}\OtherTok{=}\FunctionTok{symnum}\NormalTok{(test}\SpecialCharTok{$}\NormalTok{p.value, }\AttributeTok{corr =} \ConstantTok{FALSE}\NormalTok{, }\AttributeTok{na =} \ConstantTok{FALSE}\NormalTok{,}
+                      \AttributeTok{cutpoints =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FloatTok{0.001}\NormalTok{, }\FloatTok{0.01}\NormalTok{, }\FloatTok{0.05}\NormalTok{, }\FloatTok{0.1}\NormalTok{, }\DecValTok{1}\NormalTok{),}
+                      \AttributeTok{symbols =} \FunctionTok{c}\NormalTok{(}\StringTok{"***"}\NormalTok{, }\StringTok{"**"}\NormalTok{, }\StringTok{"*"}\NormalTok{, }\StringTok{"."}\NormalTok{, }\StringTok{" "}\NormalTok{))}
+
+        \FunctionTok{text}\NormalTok{(}\FloatTok{0.5}\NormalTok{, }\FloatTok{0.5}\NormalTok{, txt, }\AttributeTok{cex =}\NormalTok{ cex }\SpecialCharTok{*} \FunctionTok{abs}\NormalTok{(r))}
+        \FunctionTok{text}\NormalTok{(.}\DecValTok{8}\NormalTok{, .}\DecValTok{8}\NormalTok{, Signif, }\AttributeTok{cex=}\NormalTok{cex, }\AttributeTok{col=}\DecValTok{2}\NormalTok{)}
+\NormalTok{\}}
+
+\FunctionTok{pairs}\NormalTok{(}\FunctionTok{as.matrix}\NormalTok{(df[,}\DecValTok{2}\SpecialCharTok{:}\DecValTok{12}\NormalTok{]),}\AttributeTok{lower.panel=}\NormalTok{panel.smooth, }\AttributeTok{upper.panel=}\NormalTok{panel.cor\_simple)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-25-1.pdf}
+\#
+=============================================================================
+\# Statistiques bivariées (quali * quali) \#
+============================================================================
+\# tableau de contingence , les profils lignes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tc}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(X,Y)}
+\NormalTok{\{}
+\NormalTok{    tc}\OtherTok{=}\FunctionTok{table}\NormalTok{(X,Y); tc}\OtherTok{=}\FunctionTok{cbind}\NormalTok{(tc,}\AttributeTok{Total=}\FunctionTok{apply}\NormalTok{(tc,}\DecValTok{1}\NormalTok{,sum)); }
+\NormalTok{    tc}\OtherTok{=}\FunctionTok{rbind}\NormalTok{(tc,}\AttributeTok{Total=}\FunctionTok{apply}\NormalTok{(tc,}\DecValTok{2}\NormalTok{,sum));}
+    \FunctionTok{return}\NormalTok{(tc)}
+\NormalTok{\}}
+
+ 
+\NormalTok{pl}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(X,Y)}
+\NormalTok{\{}
+\NormalTok{    tc}\OtherTok{=}\FunctionTok{table}\NormalTok{(X,Y); suml}\OtherTok{=}\FunctionTok{apply}\NormalTok{(tc,}\DecValTok{1}\NormalTok{,sum); }
+\NormalTok{    sumc}\OtherTok{=}\FunctionTok{apply}\NormalTok{(tc,}\DecValTok{2}\NormalTok{,sum);}
+\NormalTok{    pl}\OtherTok{=}\FunctionTok{rbind}\NormalTok{(tc}\SpecialCharTok{/}\NormalTok{suml,}\AttributeTok{Ensemble=}\NormalTok{sumc}\SpecialCharTok{/}\FunctionTok{sum}\NormalTok{(sumc)); }
+    \FunctionTok{return}\NormalTok{(pl)}
+\NormalTok{\}}
+
+\NormalTok{testkideux}\OtherTok{=}\ControlFlowTok{function}\NormalTok{(x,y)}
+\NormalTok{\{}
+\NormalTok{  t}\OtherTok{=}\StringTok{\textquotesingle{}\textquotesingle{}}
+\NormalTok{    t1}\OtherTok{=}\FunctionTok{chisq.test}\NormalTok{(}\FunctionTok{table}\NormalTok{(x,y));}
+\NormalTok{    kideux}\OtherTok{=}\NormalTok{t1}\SpecialCharTok{$}\NormalTok{statistic;}
+\NormalTok{    ddl}\OtherTok{=}\NormalTok{t1}\SpecialCharTok{$}\NormalTok{parameter;}
+\NormalTok{    Pvalue}\OtherTok{=}\NormalTok{t1}\SpecialCharTok{$}\NormalTok{p.value;}
+    
+    \ControlFlowTok{if}\NormalTok{(Pvalue}\SpecialCharTok{\textless{}}\FloatTok{0.05}\NormalTok{)\{}
+\NormalTok{      t}\OtherTok{=}\StringTok{\textquotesingle{}on rejet HO, les deux variables sont liées\textquotesingle{}}
+\NormalTok{    \}}\ControlFlowTok{else}\NormalTok{\{}
+\NormalTok{      t}\OtherTok{=}\StringTok{\textquotesingle{}on ne peut pas rejeter Ho, les deux variables ne sont pas liées\textquotesingle{}}
+\NormalTok{    \}}
+    
+\NormalTok{    text}\OtherTok{=}\FunctionTok{paste}\NormalTok{(}\StringTok{"statistique de Khideux égale à "}\NormalTok{ ,kideux, }\StringTok{" ddl de "}\NormalTok{ ,ddl,}\StringTok{" et une pvalue de "}\NormalTok{, Pvalue, }\StringTok{"donc :"}\NormalTok{,t);}
+    \FunctionTok{return}\NormalTok{(text) }
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Tableau de contingence\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Tableau de contingence"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{tc}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl,df}\SpecialCharTok{$}\NormalTok{carb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       1  2 3  4 6 8 Total
+## 4     5  6 0  0 0 0    11
+## 6     2  0 0  4 1 0     7
+## 8     0  4 3  6 0 1    14
+## Total 7 10 3 10 1 1    32
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] ""
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}Profil ligne\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Profil ligne"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pl}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl,df}\SpecialCharTok{$}\NormalTok{carb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                  1         2         3         4         6          8
+## 4        0.4545455 0.5454545 0.0000000 0.0000000 0.0000000 0.00000000
+## 6        0.2857143 0.0000000 0.0000000 0.5714286 0.1428571 0.00000000
+## 8        0.0000000 0.2857143 0.2142857 0.4285714 0.0000000 0.07142857
+## Ensemble 0.2187500 0.3125000 0.0937500 0.3125000 0.0312500 0.03125000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(}\FunctionTok{tc}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl,df}\SpecialCharTok{$}\NormalTok{carb),}\AttributeTok{main =}\StringTok{"cyl * carb"}\NormalTok{,}\AttributeTok{legend.text =}\FunctionTok{rownames}\NormalTok{(}\FunctionTok{tc}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl,df}\SpecialCharTok{$}\NormalTok{carb)),}\AttributeTok{col =}\DecValTok{2}\SpecialCharTok{:}\DecValTok{5}\NormalTok{,}\AttributeTok{args.legend=}\FunctionTok{list}\NormalTok{(}\AttributeTok{x=}\StringTok{"top"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{donnees_quantis_files/figure-latex/unnamed-chunk-27-1.pdf}
+\#\#Test du khi-deux pour voir si la couleur est liée à la tapenade.
+\#Test d'indépendance \#Ho: la couleur et la tapenade sont indépendantes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{testkideux}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{cyl,df}\SpecialCharTok{$}\NormalTok{carb)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in chisq.test(table(x, y)): Chi-squared approximation may be incorrect
+\end{verbatim}
+
+\begin{verbatim}
+## [1] "statistique de Khideux égale à  24.3888682745826  ddl de  10  et une pvalue de  0.00663247776299206 donc : on rejet HO, les deux variables sont liées"
+\end{verbatim}
+
+\end{document}
